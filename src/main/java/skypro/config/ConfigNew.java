@@ -1,11 +1,15 @@
 package skypro.config;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
 
 @Configuration
 @ComponentScan(basePackages = "skypro")
@@ -19,4 +23,19 @@ public class ConfigNew {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+    @Bean
+    public DataSource getDataSourse(){
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        try {
+            dataSource.setDriverClass("org.postgresql.Driver");
+            dataSource.setJdbcUrl("jdbc:postgresql://localhost/spring");
+            dataSource.setUser("postgres");
+            dataSource.setPassword("8363");
+        } catch (PropertyVetoException e) {
+            throw new RuntimeException(e);
+        }
+        return dataSource;
+    }
+
+
 }

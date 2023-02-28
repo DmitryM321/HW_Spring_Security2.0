@@ -16,13 +16,13 @@ Only for it
 </security:authorize>
 <br>
 <br>
-<security:authorize access="hasRole('Security')">
+<security:authorize access="hasRole('SECURITY')">
 <input type="button" value="For security" onclick="window.location.href='security_room'">
 Only for security
 </security:authorize>
 <br>
 <br>
-<security:authorize access="hasRole('Director')">
+<security:authorize access="hasRole('DIRECTOR')">
 <input type="button" value="For director" onclick="window.location.href='director_room'">
 Only for director
 </security:authorize>
